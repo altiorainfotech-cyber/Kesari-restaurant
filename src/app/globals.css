@@ -2,25 +2,51 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --background-dark: #FFA115;
+  --foreground: #000000;
+  --title: #FF9900;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Colors */
+  --color-background: #FFEBCE;
+  --color-background-dark: #FFA115;
+  --color-foreground: #000000;
+  --color-title: #FF9900;
+  --color-primary: #FF9900;
+  --color-primary-dark: #FFA115;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Fonts */
+  --font-oswald: var(--font-oswald);
+  --font-inter: var(--font-inter);
+  --font-protest: var(--font-protest);
 }
 
 body {
-  background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), sans-serif;
+}
+
+/* Headings use Oswald by default */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-oswald), sans-serif;
+  color: var(--title);
+}
+
+/* Utility classes for fonts */
+.font-oswald {
+  font-family: var(--font-oswald), sans-serif;
+}
+
+.font-inter {
+  font-family: var(--font-inter), sans-serif;
+}
+
+.font-protest {
+  font-family: var(--font-protest), cursive;
 }

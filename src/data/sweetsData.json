@@ -1,0 +1,303 @@
+[
+    {
+        "id": 1,
+        "name": "Bikaneri Barfi",
+        "price": 13.00,
+        "unit": "lb",
+        "image": "/images/order/Sweets/Bikareri Barfi.webp"
+    },
+    {
+        "id": 2,
+        "name": "Gur Khoya Barfi",
+        "price": 15.00,
+        "unit": "lb",
+        "image": "/images/order/Sweets/Gur Khoya Barfi.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Plain Khoya Barfi",
+        "price": 12.00,
+        "unit": "lb",
+        "image": "/images/order/Sweets/Khoya_Burfi.webp"
+    },
+    {
+        "id": 4,
+        "name": "Khoya Pista Barfi",
+        "price": 13.00,
+        "unit": "lb",
+        "image": "/images/order/Sweets/khoya Pista Barfi.webp"
+    },
+    {
+        "id": 5,
+        "name": "Almond Khoya",
+        "price": 13.00,
+        "unit": "lb",
+        "image": "/images/order/Sweets/khoya_badam_burfi_3072x2048_56b0b293-1b36-4e53-9045-cc2ff19d4190.webp"
+    },
+    {
+        "id": 6,
+        "name": "Gajar Pak",
+        "price": 13.00,
+        "unit": "lb",
+        "image": "/images/order/Sweets/Gajar-Pak.jpg"
+    },
+    {
+        "id": 7,
+        "name": "Khoya Gajar",
+        "price": 13.00,
+        "unit": "lb",
+        "image": "/images/order/Sweets/Khoya Gajar.jpg"
+    },
+    {
+        "id": 8,
+        "name": "Mango Barfi",
+        "price": 13.00,
+        "unit": "lb",
+        "image": "/images/order/Sweets/Mango-Burfi.webp"
+    },
+    {
+        "id": 9,
+        "name": "Dhodha Barfi",
+        "price": 13.00,
+        "unit": "lb",
+        "image": "/images/order/Sweets/dodha-barfi.jpg"
+    },
+    {
+        "id": 10,
+        "name": "Fruit Barfi",
+        "price": 13.00,
+        "unit": "lb",
+        "image": "/images/order/Sweets/Fruit barfi.jpg"
+    },
+    {
+        "id": 11,
+        "name": "Kaju Katli",
+        "price": 13.00,
+        "unit": "lb",
+        "image": "/images/order/Sweets/Kaju katli.avif"
+    },
+    {
+        "id": 12,
+        "name": "Mathura Peda",
+        "price": 13.00,
+        "unit": "lb",
+        "image": "/images/order/Sweets/mathura-peda.jpg"
+    },
+    {
+        "id": 13,
+        "name": "Kesar Peda",
+        "price": 13.00,
+        "unit": "lb",
+        "image": "/images/order/Sweets/Kesar peda.webp"
+    },
+    {
+        "id": 14,
+        "name": "Kalakand",
+        "price": 13.00,
+        "unit": "lb",
+        "image": "/images/order/Sweets/Kalakand.png"
+    },
+    {
+        "id": 15,
+        "name": "Pink Coconut Barfi",
+        "price": 13.00,
+        "unit": "lb",
+        "image": "/images/order/Sweets/Pink coconut barfi.jpg"
+    },
+    {
+        "id": 16,
+        "name": "Besan Barfi",
+        "price": 9.00,
+        "unit": "lb",
+        "image": "/images/order/Sweets/Besan barfi.jpg"
+    },
+    {
+        "id": 17,
+        "name": "Coconut Ladoo",
+        "price": 15.00,
+        "unit": "lb",
+        "image": "/images/order/Sweets/Coconut ladoo.webp"
+    },
+    {
+        "id": 18,
+        "name": "Kesar Ladoo",
+        "price": 9.00,
+        "unit": "lb",
+        "image": "/images/order/Sweets/Kesar ladoo.webp"
+    },
+    {
+        "id": 19,
+        "name": "Navratan Ladoo",
+        "price": 9.00,
+        "unit": "lb",
+        "image": "/images/order/Sweets/Navratan ladoo.webp"
+    },
+    {
+        "id": 20,
+        "name": "Besan Ladoo",
+        "price": 12.00,
+        "unit": "lb",
+        "image": "/images/order/Sweets/Besan ladoo.webp"
+    },
+    {
+        "id": 21,
+        "name": "Atta Pinni",
+        "price": 15.00,
+        "unit": "lb",
+        "image": "/images/order/Sweets/Atta pinni.webp"
+    },
+    {
+        "id": 22,
+        "name": "Alsi Pinni",
+        "price": 15.00,
+        "unit": "lb",
+        "image": "/images/order/Sweets/Alsi pinni.png"
+    },
+    {
+        "id": 23,
+        "name": "Patisa",
+        "price": 12.00,
+        "unit": "lb",
+        "image": "/images/order/Sweets/Patisa.webp"
+    },
+    {
+        "id": 24,
+        "name": "Chana Dal Barfi",
+        "price": 13.00,
+        "unit": "lb",
+        "image": "/images/order/Sweets/Chana dal barfi.jpg"
+    },
+    {
+        "id": 25,
+        "name": "Gulab Jamun Filled",
+        "price": 12.00,
+        "unit": "lb",
+        "image": "/images/order/Sweets/Gulab-Jamun-1.jpg"
+    },
+    {
+        "id": 26,
+        "name": "Pink Chum Chum",
+        "price": 12.00,
+        "unit": "lb",
+        "image": "/images/order/Sweets/Pink-Chum-Chum.jpg"
+    },
+    {
+        "id": 27,
+        "name": "White Chum Chum",
+        "price": 12.00,
+        "unit": "lb",
+        "image": "/images/order/Sweets/White chum chum.jpg"
+    },
+    {
+        "id": 28,
+        "name": "Orange Chum Chum",
+        "price": 12.00,
+        "unit": "lb",
+        "image": "/images/order/Sweets/Orange chum chum.jpg"
+    },
+    {
+        "id": 29,
+        "name": "Pan Petha",
+        "price": 2.50,
+        "unit": "pc",
+        "image": "/images/order/Sweets/Pan petha.webp"
+    },
+    {
+        "id": 30,
+        "name": "Kaju Paan",
+        "price": 2.00,
+        "unit": "pc",
+        "image": "/images/order/Sweets/Kaju paan.jpg"
+    },
+    {
+        "id": 31,
+        "name": "Paan Ladoo",
+        "price": 2.00,
+        "unit": "pc",
+        "image": "/images/order/Sweets/Paan ladoo.jpg"
+    },
+    {
+        "id": 32,
+        "name": "Rose Ladoo",
+        "price": 3.00,
+        "unit": "pc",
+        "image": "/images/order/Sweets/Rose ladoo.jpg"
+    },
+    {
+        "id": 33,
+        "name": "Gulab Jamun",
+        "price": 10.00,
+        "unit": "lb",
+        "image": "/images/order/Sweets/Gulab jamun.jpg"
+    },
+    {
+        "id": 34,
+        "name": "Coconut Gulab Jamun",
+        "price": 10.00,
+        "unit": "lb",
+        "image": "/images/order/Sweets/Coconut_Gulab_Jamun.webp"
+    },
+    {
+        "id": 35,
+        "name": "Angoori Gulab Jamun",
+        "price": 10.00,
+        "unit": "lb",
+        "image": "/images/order/Sweets/Angoori gulab jamun.webp"
+    },
+    {
+        "id": 36,
+        "name": "Gluten Free Gulab Jamun",
+        "price": 10.00,
+        "unit": "lb",
+        "image": "/images/order/Sweets/Gluten free gulab jamun.jpg"
+    },
+    {
+        "id": 37,
+        "name": "Rasgulla",
+        "price": 10.00,
+        "unit": "lb",
+        "image": "/images/order/Sweets/Rasgulla.jpg"
+    },
+    {
+        "id": 38,
+        "name": "Angoori Rasgulla",
+        "price": 10.00,
+        "unit": "lb",
+        "image": "/images/order/Sweets/Angoori rasgulla.png"
+    },
+    {
+        "id": 39,
+        "name": "Spongy Rasgulla",
+        "price": 3.00,
+        "unit": "pc",
+        "image": "/images/order/Sweets/Spongy rasgulla.jpeg"
+    },
+    {
+        "id": 40,
+        "name": "Coconut Rasgulla",
+        "price": 10.00,
+        "unit": "lb",
+        "image": "/images/order/Sweets/Coconut rasgulla.jpg"
+    },
+    {
+        "id": 41,
+        "name": "Rasmalai",
+        "price": 3.00,
+        "unit": "pc",
+        "image": "/images/order/Sweets/rasmalai-recipe.jpg"
+    },
+    {
+        "id": 42,
+        "name": "Gajar Halwa",
+        "price": 13.00,
+        "unit": "lb",
+        "image": "/images/order/Sweets/Gajar-Halwa-Indian.webp"
+    },
+    {
+        "id": 43,
+        "name": "Moongdal Halwa",
+        "price": 13.00,
+        "unit": "lb",
+        "image": "/images/order/Sweets/Dal-Halwa-Blog.jpg"
+    }
+]
