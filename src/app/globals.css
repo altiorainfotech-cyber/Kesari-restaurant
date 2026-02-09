@@ -51,6 +51,29 @@ h6 {
   font-family: var(--font-protest), cursive;
 }
 
+/* Catering hero fade-in animations */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 /* Orbiting dot animation for catering menu */
 @keyframes orbitSpin {
   from {
