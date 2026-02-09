@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import sweetsData from "@/data/sweetsData.json";
-import { Header, Footer } from "@/components/layout";
+import { Header, FooterSecondary } from "@/components/layout";
 
 export default function SweetsPage() {
     const [quantities, setQuantities] = useState<{ [key: number]: number }>(
@@ -159,7 +159,7 @@ export default function SweetsPage() {
                 </div>
             </main>
 
-            <Footer />
+            <FooterSecondary />
         </div>
     );
 }

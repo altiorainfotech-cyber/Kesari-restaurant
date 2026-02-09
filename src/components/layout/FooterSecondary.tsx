@@ -1,105 +1,14 @@
 "use client";
 
-import Image from "next/image";
 import { SITE_NAME } from "@/constants";
-import { useState } from "react";
 
-const reviews = [
-  {
-    name: "Lawrence Salaver",
-    role: "Regular Customer",
-    image: "/images/home-page/herosection/Customer-Experiences/Mask group.png",
-    review: "A beautiful ambient and interior. Great space for a setting and pool table for more fun. Staff was very friendly and well trained.",
-    rating: 5
-  },
-  {
-    name: "Anita Sharma",
-    role: "Food Enthusiast",
-    image: "/images/home-page/herosection/Customer-Experiences/Mask group (1).png",
-    review: "The authenticity of the flavors here is unmatched. Every dish feels like it was made with love and traditional secrets. Highly recommend the sweets!",
-    rating: 5
-  },
-  {
-    name: "John David",
-    role: "Local Guide",
-    image: "/images/home-page/herosection/Customer-Experiences/Mask group (2).png",
-    review: "Best Indian spot in Surrey! The service is quick and the atmosphere is perfect for family dinners. Don't miss their signature Biryani.",
-    rating: 5
-  },
-  {
-    name: "Sarah Williams",
-    role: "First-time Visitor",
-    image: "/images/home-page/herosection/Customer-Experiences/image 91.png",
-    review: "Coming here was a delightful experience. The portions are generous and the spice levels are just right. Will definitely be coming back soon.",
-    rating: 5
-  }
-];
-
-export default function Footer() {
-  const [activeReview, setActiveReview] = useState(0);
-
+export default function FooterSecondary() {
   return (
     <footer>
-      {/* Main Footer Section with Background Image */}
       <div
-        className="bg-cover bg-center bg-no-repeat "
-        style={{ backgroundImage: "url('/images/footer/background.png')" }}
+        className="bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('/images/footersecond-image.png')" }}
       >
-        {/* Customer Experiences Section */}
-        <section className="py-12 md:py-20">
-          <div className="container mx-auto px-6 md:px-12 lg:px-20">
-            <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
-              {/* Left Side - Title and Food Images */}
-              <div className="w-full lg:w-[45%]">
-                <h2 className="!font-inter text-[36px] md:text-[48px] !font-normal !text-black lg:!text-title mb-6 leading-tight">
-                  Customer Experiences
-                </h2>
-
-                {/* Food Thumbnails - Interactive Slider */}
-                <div className="flex flex-wrap gap-3 mt-6">
-                  {reviews.map((item, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setActiveReview(index)}
-                      className={`relative w-[80px] sm:w-[107px] h-[32px] sm:h-[38px] rounded-[16px] overflow-hidden shadow-sm transition-all duration-300 ${activeReview === index
-                          ? "ring-2 ring-[#FF9900] scale-105"
-                          : "opacity-60 hover:opacity-100"
-                        }`}
-                    >
-                      <Image
-                        src={item.image}
-                        alt={`Review from ${item.name}`}
-                        fill
-                        className="object-cover"
-                      />
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Right - Customer Review (Dynamic Content) */}
-              <div className="w-full lg:w-[55%] pt-2 transition-all duration-500 ease-in-out">
-                <div className="mb-4">
-                  <h3 className="!font-inter text-[22px] md:text-[24px] !font-normal !text-black leading-tight">
-                    {reviews[activeReview].name}
-                  </h3>
-                  <p className="text-sm text-black opacity-70">{reviews[activeReview].role}</p>
-                  {/* Star Rating */}
-                  <div className="flex gap-1 mt-2">
-                    {[...Array(reviews[activeReview].rating)].map((_, i) => (
-                      <span key={i} className="text-[#FF9900] text-sm">★</span>
-                    ))}
-                  </div>
-                </div>
-
-                <p className="font-inter text-base md:text-lg text-foreground leading-relaxed max-w-xl italic">
-                  &quot;{reviews[activeReview].review}&quot;
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Come See Us Section */}
         <section className="pt-16 pb-6 md:py-20 lg:py-28">
           <div className="container mx-auto px-6 md:px-12 lg:px-20">

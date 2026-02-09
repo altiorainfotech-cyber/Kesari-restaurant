@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import orderData from "@/data/orderData.json";
-import { Header, Footer } from "@/components/layout";
+import { Header, FooterSecondary } from "@/components/layout";
 
 export default function OrderPage() {
     const [activeCategory, setActiveCategory] = useState("Appetizers");
@@ -115,7 +115,7 @@ export default function OrderPage() {
                 </div>
             </main>
 
-            <Footer />
+            <FooterSecondary />
         </div>
     );
 }
