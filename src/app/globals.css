@@ -50,3 +50,13 @@ h6 {
 .font-protest {
   font-family: var(--font-protest), cursive;
 }
+
+/* Orbiting dot animation for catering menu */
+@keyframes orbitSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

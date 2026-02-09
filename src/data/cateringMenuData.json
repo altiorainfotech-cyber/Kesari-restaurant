@@ -1,0 +1,164 @@
+{
+  "sections": [
+    {
+      "title": "APPETIZERS (VEG)",
+      "image": "/images/Catering-Menu/appeziters.png",
+      "categories": [
+        {
+          "name": "Pakora",
+          "items": ["Veg Pakora", "Paneer Pakora", "Gobi Pakora", "Mirch Pakora", "Aloo Finger", "Paneer Finger", "Bread Pakora", "Spring Roll"]
+        },
+        {
+          "name": "Paneer",
+          "items": ["Paneer Tikka - Traditional", "Paneer Tikka - Hariyali", "Chilli Paneer", "Malai Paneer Cubes"]
+        },
+        {
+          "name": "Live Station",
+          "items": ["Tawa Tikki", "Pav Bhaji", "Nutri Kulcha", "Samosa Chaat", "Gol Gappa", "Chaat Papdi", "Taco and Burrito Bar", "Momos", "Chole Bhature and Aloo Puri"]
+        },
+        {
+          "name": "Others",
+          "items": ["Hara Bhara Kebab", "Corn Kebab", "Beetroot Tikki", "Stuffed Mushroom", "Chilli Mushroom", "Chaat Papdi", "Manchurian", "Chowmein", "Aloo Tikki", "Pav Bhaji"]
+        },
+        {
+          "name": "Others",
+          "items": ["Gol Gappa", "Honey Gobi", "Sandwiches", "Veg Sliders", "Veg Momos - Tandoori and Chilli", "Soy Chaap - Tandoori and Malai", "Tandoori Tofu Tikka", "Dry Fruit Chaat", "Fruit Chaat", "Cocktail Samosa"]
+        }
+      ]
+    },
+    {
+      "title": "APPETIZERS (NON-VEG)",
+      "image": "/images/Catering-Menu/appizeirs-non-veg.png",
+      "categories": [
+        {
+          "name": "Pakora",
+          "items": ["Veg Pakora", "Paneer Pakora", "Gobi Pakora", "Mirch Pakora", "Aloo Finger", "Paneer Finger", "Bread Pakora", "Spring Roll"]
+        },
+        {
+          "name": "Paneer",
+          "items": ["Paneer Tikka - Traditional", "Paneer Tikka - Hariyali", "Chilli Paneer", "Malai Paneer Cubes"]
+        },
+        {
+          "name": "Others",
+          "items": ["Tawa Tikki", "Pav Bhaji", "Nutri Kulcha", "Samosa Chaat", "Gol Gappa", "Chaat Papdi", "Taco and Burrito Bar", "Momos", "Chole Bhature and Aloo Puri"]
+        }
+      ]
+    },
+    {
+      "title": "MAIN COURSE (VEG)",
+      "image": "/images/Catering-Menu/MAIN COURSE (VEG).png",
+      "categories": [
+        {
+          "name": "Pakora",
+          "items": ["Veg Pakora", "Paneer Pakora", "Gobi Pakora", "Mirch Pakora", "Aloo Finger", "Paneer Finger", "Bread Pakora", "Spring Roll"]
+        },
+        {
+          "name": "Paneer",
+          "items": ["Paneer Tikka - Traditional", "Paneer Tikka - Hariyali", "Chilli Paneer", "Malai Paneer Cubes"]
+        },
+        {
+          "name": "Others",
+          "items": ["Tawa Tikki", "Pav Bhaji", "Nutri Kulcha", "Samosa Chaat", "Gol Gappa", "Chaat Papdi", "Taco and Burrito Bar", "Momos", "Chole Bhature and Aloo Puri"]
+        },
+        {
+          "name": "Others",
+          "items": ["Hara Bhara Kebab", "Corn Kebab", "Beetroot Tikki", "Stuffed Mushroom", "Chilli Mushroom", "Chaat Papdi", "Manchurian", "Chowmein", "Aloo Tikki", "Pav Bhaji"]
+        },
+        {
+          "name": "Others",
+          "items": ["Gol Gappa", "Honey Gobi", "Sandwiches", "Veg Sliders", "Veg Momos - Tandoori and Chilli", "Soy Chaap - Tandoori and Malai", "Tandoori Tofu Tikka", "Dry Fruit Chaat", "Fruit Chaat", "Cocktail Samosa"]
+        }
+      ]
+    },
+    {
+      "title": "RICE & ROTI",
+      "image": "/images/Catering-Menu/RICE & ROTI.png",
+      "categories": [
+        {
+          "name": "Pakora",
+          "items": ["Veg Pakora", "Paneer Pakora", "Gobi Pakora", "Mirch Pakora", "Aloo Finger", "Paneer Finger", "Bread Pakora", "Spring Roll"]
+        },
+        {
+          "name": "Paneer",
+          "items": ["Paneer Tikka - Traditional", "Paneer Tikka - Hariyali", "Chilli Paneer", "Malai Paneer Cubes"]
+        },
+        {
+          "name": "Others",
+          "items": ["Tawa Tikki", "Pav Bhaji", "Nutri Kulcha", "Samosa Chaat", "Gol Gappa", "Chaat Papdi", "Taco and Burrito Bar", "Momos", "Chole Bhature and Aloo Puri"]
+        }
+      ]
+    },
+    {
+      "title": "DRINKS",
+      "image": "/images/Catering-Menu/DRINKS.png",
+      "categories": [
+        {
+          "name": "Pakora",
+          "items": ["Veg Pakora", "Paneer Pakora", "Gobi Pakora", "Mirch Pakora", "Aloo Finger", "Paneer Finger", "Bread Pakora", "Spring Roll"]
+        },
+        {
+          "name": "Paneer",
+          "items": ["Paneer Tikka - Traditional", "Paneer Tikka - Hariyali", "Chilli Paneer", "Malai Paneer Cubes"]
+        },
+        {
+          "name": "Others",
+          "items": ["Tawa Tikki", "Pav Bhaji", "Nutri Kulcha", "Samosa Chaat", "Gol Gappa", "Chaat Papdi", "Taco and Burrito Bar", "Momos", "Chole Bhature and Aloo Puri"]
+        }
+      ]
+    },
+    {
+      "title": "DESSERT",
+      "image": "/images/Catering-Menu/DESSERT.png",
+      "categories": [
+        {
+          "name": "Pakora",
+          "items": ["Veg Pakora", "Paneer Pakora", "Gobi Pakora", "Mirch Pakora", "Aloo Finger", "Paneer Finger", "Bread Pakora", "Spring Roll"]
+        },
+        {
+          "name": "Paneer",
+          "items": ["Paneer Tikka - Traditional", "Paneer Tikka - Hariyali", "Chilli Paneer", "Malai Paneer Cubes"]
+        },
+        {
+          "name": "Others",
+          "items": ["Tawa Tikki", "Pav Bhaji", "Nutri Kulcha", "Samosa Chaat", "Gol Gappa", "Chaat Papdi", "Taco and Burrito Bar", "Momos", "Chole Bhature and Aloo Puri"]
+        }
+      ]
+    },
+    {
+      "title": "SALAD, PICKLES & RAITA",
+      "image": "/images/Catering-Menu/SALAD,-PICKLES & RAITA.png",
+      "categories": [
+        {
+          "name": "Pakora",
+          "items": ["Veg Pakora", "Paneer Pakora", "Gobi Pakora", "Mirch Pakora", "Aloo Finger", "Paneer Finger", "Bread Pakora", "Spring Roll"]
+        },
+        {
+          "name": "Paneer",
+          "items": ["Paneer Tikka - Traditional", "Paneer Tikka - Hariyali", "Chilli Paneer", "Malai Paneer Cubes"]
+        },
+        {
+          "name": "Others",
+          "items": ["Tawa Tikki", "Pav Bhaji", "Nutri Kulcha", "Samosa Chaat", "Gol Gappa", "Chaat Papdi", "Taco and Burrito Bar", "Momos", "Chole Bhature and Aloo Puri"]
+        }
+      ]
+    },
+    {
+      "title": "CHARCUTERIE PLATTER",
+      "image": "/images/Catering-Menu/CHARCUTERIE-PLATTER.png",
+      "categories": [
+        {
+          "name": "Pakora",
+          "items": ["Veg Pakora", "Paneer Pakora", "Gobi Pakora", "Mirch Pakora", "Aloo Finger", "Paneer Finger", "Bread Pakora", "Spring Roll"]
+        },
+        {
+          "name": "Paneer",
+          "items": ["Paneer Tikka - Traditional", "Paneer Tikka - Hariyali", "Chilli Paneer", "Malai Paneer Cubes"]
+        },
+        {
+          "name": "Others",
+          "items": ["Tawa Tikki", "Pav Bhaji", "Nutri Kulcha", "Samosa Chaat", "Gol Gappa", "Chaat Papdi", "Taco and Burrito Bar", "Momos", "Chole Bhature and Aloo Puri"]
+        }
+      ]
+    }
+  ]
+}
