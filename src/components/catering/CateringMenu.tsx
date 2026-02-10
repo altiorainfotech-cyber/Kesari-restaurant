@@ -41,7 +41,7 @@ export default function CateringMenu() {
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-8">
                     {/* Wedding Card */}
                     <div className="bg-[#F5E6D3] rounded-t-[30px] p-6 md:p-8">
-                        <h3 className="font-bold text-[18px] md:text-[20px] !text-black mb-4 leading-tight ml-[20%]" style={{ marginRight: '-100px' }}>
+                        <h3 className="font-bold text-[18px] md:text-[20px] !text-black mb-4 leading-tight lg:ml-[20%] lg:-mr-[100px]">
                             {menuItems[0].title}
                         </h3>
                         <div className="relative w-full aspect-[4/3] rounded-[20px] overflow-hidden">
@@ -63,7 +63,7 @@ export default function CateringMenu() {
 
                     {/* Small Event Card */}
                     <div className="bg-[#F5E6D3] rounded-t-[30px] p-6 md:p-8">
-                        <h3 className="font-bold text-[18px] md:text-[20px] !text-black mb-4 leading-tight ml-[20%]" style={{ marginRight: '-100px' }}>
+                        <h3 className="font-bold text-[18px] md:text-[20px] !text-black mb-4 leading-tight lg:ml-[20%] lg:-mr-[100px]">
                             {menuItems[1].title}
                         </h3>
                         <div className="relative w-full aspect-[4/3] rounded-[20px] overflow-hidden">
@@ -85,7 +85,7 @@ export default function CateringMenu() {
                 </div>
 
                 {/* Row 2: Birthday + Corporate */}
-                <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-8">
+                <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-8 mt-8 lg:mt-0">
                     {/* Birthday Card */}
                     <div className="bg-[#F5E6D3] rounded-b-[30px] p-6 md:p-8">
                         <div className="relative w-full aspect-[4/3] rounded-[20px] overflow-hidden mb-4">
@@ -96,7 +96,7 @@ export default function CateringMenu() {
                                 className="object-cover"
                             />
                         </div>
-                        <h3 className="font-bold text-[18px] md:text-[20px] !text-black leading-tight ml-[20%]" style={{ marginRight: '-100px' }}>
+                        <h3 className="font-bold text-[18px] md:text-[20px] !text-black leading-tight lg:ml-[20%] lg:-mr-[100px]">
                             {menuItems[2].title}
                         </h3>
                     </div>
@@ -118,7 +118,7 @@ export default function CateringMenu() {
                                 className="object-cover"
                             />
                         </div>
-                        <h3 className="font-bold text-[18px] md:text-[20px] !text-black leading-tight ml-[20%]" style={{ marginRight: '-100px' }}>
+                        <h3 className="font-bold text-[18px] md:text-[20px] !text-black leading-tight lg:ml-[20%] lg:-mr-[100px]">
                             {menuItems[3].title}
                         </h3>
                     </div>

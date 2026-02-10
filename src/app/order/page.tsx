@@ -1,23 +1,63 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import orderData from "@/data/orderData.json";
 import { Header, FooterSecondary } from "@/components/layout";
+import { useCart } from "@/context/CartContext";
 
 export default function OrderPage() {
+    const { addToCart, cartItems, updateQuantity: updateCartQuantity, totalItems } = useCart();
     const [activeCategory, setActiveCategory] = useState("Appetizers");
     const [quantities, setQuantities] = useState<{ [key: number]: number }>(
         Object.fromEntries(orderData.items.map(item => [item.id, 1]))
     );
 
+    const getCartKey = (id: number) => `order-${id}`;
+
+    const getItemQuantity = (id: number) => {
+        const cartItem = cartItems.find(i => i.cartKey === getCartKey(id));
+        return cartItem ? cartItem.quantity : (quantities[id] || 1);
+    };
+
+    const handleOrderNow = (item: typeof orderData.items[0]) => {
+        const cartKey = getCartKey(item.id);
+        const existing = cartItems.find(i => i.cartKey === cartKey);
+
+        if (existing) {
+            // If already in cart, just increment by the current local picker value or just keep it?
+            // Usually "Order Now" again means add MORE or just confirm. 
+            // Let's make it add the quantity from the picker to the cart.
+            updateCartQuantity(cartKey, existing.quantity + (quantities[item.id] || 1));
+        } else {
+            addToCart({
+                cartKey,
+                name: item.name,
+                price: item.price,
+                quantity: quantities[item.id] || 1,
+                image: item.image,
+                source: "order",
+            });
+        }
+        // Reset local quantity back to 1 after adding to cart
+        setQuantities(prev => ({ ...prev, [item.id]: 1 }));
+    };
+
     const filteredItems = orderData.items.filter(item => item.category === activeCategory);
 
-    const updateQuantity = (id: number, delta: number) => {
-        setQuantities(prev => ({
-            ...prev,
-            [id]: Math.max(1, (prev[id] || 1) + delta)
-        }));
+    const updateItemQuantity = (id: number, delta: number) => {
+        const cartKey = getCartKey(id);
+        const cartItem = cartItems.find(i => i.cartKey === cartKey);
+
+        if (cartItem) {
+            updateCartQuantity(cartKey, Math.max(1, cartItem.quantity + delta));
+        } else {
+            setQuantities(prev => ({
+                ...prev,
+                [id]: Math.max(1, (prev[id] || 1) + delta)
+            }));
+        }
     };
 
     return (
@@ -74,16 +114,16 @@ export default function OrderPage() {
                                         {/* Quantity Selector - Matching Screenshot */}
                                         <div className="flex items-center gap-2">
                                             <button
-                                                onClick={() => updateQuantity(item.id, -1)}
+                                                onClick={() => updateItemQuantity(item.id, -1)}
                                                 className="bg-black text-white w-5 h-5 flex items-center justify-center text-[12px] font-bold rounded-[2px] hover:bg-black/80 transition-colors"
                                             >
                                                 -
                                             </button>
                                             <span className="!font-inter text-[13px] font-medium text-black min-w-[12px] text-center">
-                                                {quantities[item.id]}
+                                                {getItemQuantity(item.id)}
                                             </span>
                                             <button
-                                                onClick={() => updateQuantity(item.id, 1)}
+                                                onClick={() => updateItemQuantity(item.id, 1)}
                                                 className="bg-black text-white w-5 h-5 flex items-center justify-center text-[12px] font-bold rounded-[2px] hover:bg-black/80 transition-colors"
                                             >
                                                 +
@@ -92,8 +132,8 @@ export default function OrderPage() {
                                     </div>
 
                                     {/* Order Button - Positioned half-way on the bottom edge */}
-                                    <button className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 bg-[#FF9900] !font-oswald text-white px-10 py-2.5 rounded-full text-[14px] !font-normal shadow-lg hover:bg-[#e68a00] hover:scale-105 active:scale-95 transition-all duration-300 whitespace-nowrap z-20">
-                                        Order Now
+                                    <button onClick={() => handleOrderNow(item)} className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 bg-[#FF9900] !font-oswald text-white px-10 py-2.5 rounded-full text-[14px] !font-normal shadow-lg hover:bg-[#e68a00] hover:scale-105 active:scale-95 transition-all duration-300 whitespace-nowrap z-20">
+                                        {cartItems.some(i => i.cartKey === getCartKey(item.id)) ? "Add More" : "Order Now"}
                                     </button>
                                 </div>
                             </div>
@@ -106,11 +146,11 @@ export default function OrderPage() {
                 <div className="mt-20 flex justify-end pb-8">
                     <div className="w-full md:w-[35%] lg:w-[30%] bg-[#FF9900] text-black py-4 px-10 flex justify-between items-center shadow-lg rounded-l-[30px]">
                         <div className="!font-oswald text-[14px] !font-normal tracking-wide">
-                            1 Item Added
+                            {totalItems} {totalItems === 1 ? "Item" : "Items"} Added
                         </div>
-                        <button className="group !font-oswald text-[14px] !font-normal flex items-center gap-3 hover:translate-x-1 transition-all text-black">
+                        <Link href="/cart" className="group !font-oswald text-[14px] !font-normal flex items-center gap-3 hover:translate-x-1 transition-all text-black">
                             View Cart <span className="text-[18px]">›</span>
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </main>

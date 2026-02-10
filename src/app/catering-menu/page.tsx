@@ -1,5 +1,5 @@
 import { Header, FooterSecondary } from "@/components/layout";
-import CateringMenu from "@/components/catering/CateringMenu";
+import CustomizedMenus from "@/components/catering/CustomizedMenus";
 
 export default function CateringMenuPage() {
     return (
@@ -7,10 +7,12 @@ export default function CateringMenuPage() {
             <Header />
 
             <main className="pt-28">
-                <CateringMenu />
+
+                {/* sdnjwfjr  */}
+                <CustomizedMenus />
             </main>
 
-            <FooterSecondary />
+            <FooterSecondary />a
         </div>
     );
 }
