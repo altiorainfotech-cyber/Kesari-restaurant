@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Oswald, Inter, Protest_Revolution } from "next/font/google";
 import "./globals.css";
+import { CartProvider } from "@/context/CartContext";
 
 const oswald = Oswald({
   variable: "--font-oswald",
@@ -35,7 +36,7 @@ export default function RootLayout({
         className={`${oswald.variable} ${inter.variable} ${protestRevolution.variable} font-inter antialiased`}
         suppressHydrationWarning
       >
-        {children}
+        <CartProvider>{children}</CartProvider>
       </body>
     </html>
   );

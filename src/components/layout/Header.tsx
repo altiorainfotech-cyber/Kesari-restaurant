@@ -3,15 +3,21 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { useCart } from "@/context/CartContext";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
-  { href: "/sweets", label: "Sweets" },
   { href: "/order", label: "Order" },
-  { href: "/catering", label: "Catering" },
+  { href: "/sweets", label: "Sweets" },
+  {
+    href: "/catering", label: "Catering", subLinks: [
+      { href: "/catering-menu", label: "Catering Menu" },
+    ]
+  },
 ];
 
 export default function Header() {
+  const { totalPrice, totalItems } = useCart();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Prevent scrolling when menu is open
@@ -54,7 +60,21 @@ export default function Header() {
 
             <div className="hidden md:flex items-center gap-8">
               <Link href="/order" className="font-inter text-base font-medium text-foreground hover:text-title transition-colors">Order</Link>
-              <Link href="/catering" className="font-inter text-base font-medium text-foreground hover:text-title transition-colors">Catering</Link>
+              <div className="relative group">
+                <Link href="/catering" className="font-inter text-base font-medium text-foreground hover:text-title transition-colors flex items-center gap-1">
+                  Catering
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180">
+                    <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clipRule="evenodd" />
+                  </svg>
+                </Link>
+                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                  <div className="bg-white rounded-xl shadow-lg py-2 min-w-[180px]">
+                    <Link href="/catering-menu" className="block px-4 py-2 font-inter text-sm text-black hover:bg-[#FF9900]/10 hover:text-[#FF9900] transition-colors">
+                      Catering Menu
+                    </Link>
+                  </div>
+                </div>
+              </div>
             </div>
           </nav>
 
@@ -68,13 +88,22 @@ export default function Header() {
             </button>
 
             {/* Price/Cart Tag (Modern) */}
-            <div className="hidden sm:flex items-center bg-[#FF9900] text-white px-4 py-1.5 rounded-full gap-2 shadow-sm cursor-pointer hover:bg-[#e68a00] transition-all">
-              <span className="font-inter text-sm font-semibold">CAD $0.00</span>
+            <Link href="/cart" className="hidden sm:flex items-center bg-[#FF9900] text-white px-4 py-1.5 rounded-full gap-2 shadow-sm cursor-pointer hover:bg-[#e68a00] transition-all relative">
+              <span className="font-inter text-sm font-semibold">
+                CAD ${totalPrice.toFixed(2)}
+              </span>
               <div className="w-[1px] h-4 bg-white/30"></div>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007z" />
-              </svg>
-            </div>
+              <div className="relative">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007z" />
+                </svg>
+                {totalItems > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-black text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
+                    {totalItems}
+                  </span>
+                )}
+              </div>
+            </Link>
 
             {/* Mobile Menu Toggle Button */}
             <button
@@ -98,23 +127,35 @@ export default function Header() {
         <div className="absolute inset-0 bg-white/95 backdrop-blur-xl transition-all" onClick={() => setIsMenuOpen(false)}></div>
 
         {/* Menu Content */}
-        <nav className="relative h-full flex flex-col justify-center items-center px-10 gap-10">
+        <nav className="relative h-full flex flex-col justify-center items-center px-10 gap-6">
           {NAV_LINKS.map((link, index) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`font-oswald text-4xl font-medium text-foreground hover:text-title transition-all duration-300 ${isMenuOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
-              style={{ transitionDelay: `${index * 100}ms` }}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {link.label}
-            </Link>
+            <div key={link.href} className="flex flex-col items-center">
+              <Link
+                href={link.href}
+                className={`font-oswald text-[27px] font-medium text-foreground hover:text-title transition-all duration-300 ${isMenuOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
+                style={{ transitionDelay: `${index * 100}ms` }}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {link.label}
+              </Link>
+              {link.subLinks && link.subLinks.map((sub, subIndex) => (
+                <Link
+                  key={sub.href}
+                  href={sub.href}
+                  className={`font-oswald text-[27px] font-medium text-foreground hover:text-title mt-6 transition-all duration-300 ${isMenuOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
+                  style={{ transitionDelay: `${(index * 100) + 50}ms` }}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {sub.label}
+                </Link>
+              ))}
+            </div>
           ))}
 
           {/* Mobile Pickup Address */}
           <div className={`mt-10 flex flex-col items-center gap-2 text-center transition-all duration-500 delay-500 ${isMenuOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}>
             <span className="font-inter text-sm text-gray-400 uppercase tracking-widest">Visit Us</span>
-            <span className="font-oswald text-xl text-foreground">2-1990 152 Street, Surrey, BC</span>
+            <span className="font-oswald text-xl text-foreground">2-1990 152 Street, Surrey</span>
           </div>
 
           {/* Mobile Socials or CTA */}

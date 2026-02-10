@@ -1,132 +1,107 @@
 import Image from "next/image";
-
-const menuCards = [
-    {
-        title: "Wedding Catering Services in Surrey",
-        image: "/images/catring/custom-menus/Wedding Catering Services in Surrey.png",
-        description:
-            "Make your special day unforgettable with elegant wedding catering in Surrey, featuring traditional Indian sweets, savoury dishes, and customized full-course vegetarian menus for your ceremony and reception.",
-    },
-    {
-        title: "Small Event Catering in Surrey",
-        image: "/images/catring/custom-menus/Small Event Catering in Surrey.png",
-        description:
-            "Hosting a house party, anniversary, or intimate gathering? Our small event catering services in Surrey are designed for flexibility, freshness, and flavour\u2014ideal for events of any size.",
-    },
-    {
-        title: "Birthday Catering Services in Surrey",
-        image: "/images/catring/custom-menus/Birthday Catering Services in Surrey.png",
-        description:
-            "Planning a birthday party? Our birthday catering services in Surrey are perfect for kids\u2019 parties, milestone birthdays, and family celebrations\u2014delicious food without the stress of cooking.",
-    },
-    {
-        title: "Corporate & Office Catering",
-        image: "/images/catring/custom-menus/Corporate & Office Catering.png",
-        description:
-            "Professional catering for meetings, staff lunches, and business events, delivered on time with consistent quality.",
-    },
-];
+import cateringMenuData from "@/data/cateringMenuData.json";
 
 export default function CustomizedMenus() {
     return (
-        <section className="py-16 md:py-20 lg:py-24">
-            <div className="container mx-auto px-6 md:px-12 lg:px-20">
-                {/* Title */}
-                <h2 className="!font-protest text-[28px] md:text-[36px] lg:text-[42px] !font-normal !text-[#FF9900] text-center mb-12 italic">
-                    We proudly offer customized menus for all occasions:
-                </h2>
+        <section className="relative bg-white">
+            {/* Orange splatter background at top */}
+            <div className="absolute top-0 left-0 w-full z-0">
+                <Image
+                    src="/images/Catering-Menu/background-catering.png"
+                    alt=""
+                    width={1440}
+                    height={400}
+                    className="w-full h-auto object-cover"
+                />
+            </div>
 
-                {/* Cards Grid - constrained width */}
-                <div className="max-w-4xl mx-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 lg:gap-x-16 gap-y-5">
-                        {/* Left Column */}
-                        <div className="flex flex-col gap-5">
-                            {/* Wedding Card - title at top */}
-                            <div className="bg-[#FFEBCE] rounded-3xl p-4 md:p-5">
-                                <h3 className="!font-oswald text-[16px] md:text-[18px] !font-semibold !text-black mb-3">
-                                    {menuCards[0].title}
-                                </h3>
-                                <div className="flex gap-3">
-                                    <div className="w-[130px] md:w-[150px] shrink-0 rounded-2xl overflow-hidden">
-                                        <Image
-                                            src={menuCards[0].image}
-                                            alt={menuCards[0].title}
-                                            width={150}
-                                            height={120}
-                                            className="w-full h-auto"
-                                        />
-                                    </div>
-                                    <p className="!font-inter text-[11px] md:text-[12px] !font-normal !text-black/80 leading-relaxed">
-                                        {menuCards[0].description}
-                                    </p>
-                                </div>
-                            </div>
+            <div className="relative z-10 py-12 md:py-20 lg:py-24">
+                <div className="container mx-auto px-6 md:px-8 lg:px-16">
+                    <div className="relative">
+                        {/* Menu Sections */}
+                        <div className="flex flex-col gap-16 md:gap-24">
+                            {cateringMenuData.sections.map((section, sectionIndex) => (
+                                <div key={sectionIndex} className="relative">
+                                    <div>
+                                        {/* Section Title */}
+                                        <h2 className="!font-oswald text-[28px] sm:text-[36px] md:text-[42px] lg:text-[48px] !font-normal !text-black mb-6 md:mb-8 leading-tight tracking-wide text-center lg:text-left">
+                                            {section.title}
+                                        </h2>
 
-                            {/* Birthday Card - title at bottom */}
-                            <div className="bg-[#FFEBCE] rounded-3xl p-4 md:p-5">
-                                <div className="flex gap-3">
-                                    <div className="w-[130px] md:w-[150px] shrink-0 rounded-2xl overflow-hidden">
-                                        <Image
-                                            src={menuCards[2].image}
-                                            alt={menuCards[2].title}
-                                            width={150}
-                                            height={120}
-                                            className="w-full h-auto"
-                                        />
-                                    </div>
-                                    <p className="!font-inter text-[11px] md:text-[12px] !font-normal !text-black/80 leading-relaxed">
-                                        {menuCards[2].description}
-                                    </p>
-                                </div>
-                                <h3 className="!font-oswald text-[16px] md:text-[18px] !font-semibold !text-black mt-3">
-                                    {menuCards[2].title}
-                                </h3>
-                            </div>
-                        </div>
+                                        {/* Content: Image + Categories */}
+                                        <div className="flex flex-col items-center lg:items-start lg:flex-row gap-8 lg:gap-12">
+                                            {/* Food Image */}
+                                            <div className="w-[180px] sm:w-[220px] md:w-[240px] lg:w-[280px] flex-shrink-0">
+                                                <div className="relative w-full aspect-square mx-auto">
+                                                    {/* Orange ring border */}
+                                                    <div className="absolute inset-[-8%] rounded-full border-[2px] border-[#FF9900]" />
+                                                    {/* Orbiting orange dot - spins 360 on the ring */}
+                                                    <div
+                                                        className="absolute inset-[-8%] z-20 animate-[orbitSpin_12s_linear_infinite]"
+                                                        style={{ animationDelay: `${sectionIndex * -1.5}s` }}
+                                                    >
+                                                        <div
+                                                            className="absolute w-[16px] h-[16px] rounded-full bg-[#FF9900]"
+                                                            style={{
+                                                                top: '-8px',
+                                                                left: '50%',
+                                                                transform: 'translateX(-50%)',
+                                                            }}
+                                                        />
+                                                    </div>
+                                                    {/* Circular food image */}
+                                                    <div className="relative w-full h-full rounded-full overflow-hidden shadow-lg">
+                                                        <Image
+                                                            src={section.image}
+                                                            alt={section.title}
+                                                            fill
+                                                            className="object-cover"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                        {/* Right Column - offset down */}
-                        <div className="flex flex-col gap-5 md:mt-14">
-                            {/* Small Event Card - title at top */}
-                            <div className="bg-[#FFEBCE] rounded-3xl p-4 md:p-5">
-                                <h3 className="!font-oswald text-[16px] md:text-[18px] !font-semibold !text-black mb-3">
-                                    {menuCards[1].title}
-                                </h3>
-                                <div className="flex gap-3">
-                                    <div className="w-[130px] md:w-[150px] shrink-0 rounded-2xl overflow-hidden">
-                                        <Image
-                                            src={menuCards[1].image}
-                                            alt={menuCards[1].title}
-                                            width={150}
-                                            height={120}
-                                            className="w-full h-auto"
-                                        />
-                                    </div>
-                                    <p className="!font-inter text-[11px] md:text-[12px] !font-normal !text-black/80 leading-relaxed">
-                                        {menuCards[1].description}
-                                    </p>
-                                </div>
-                            </div>
+                                            {/* Categories Grid */}
+                                            <div className="w-full flex-1 grid grid-cols-2 sm:flex sm:flex-wrap lg:flex-nowrap gap-x-6 sm:gap-x-10 gap-y-6">
+                                                {section.categories.map((category, catIndex) => {
+                                                    const isDuplicate = section.categories.findIndex(c => c.name === category.name) < catIndex;
+                                                    return (
+                                                    <div key={catIndex} className="min-w-0">
+                                                        {/* Category Tab */}
+                                                        <div className={`inline-block rounded-full px-5 py-1 mb-4 ${isDuplicate ? "border-transparent" : "border border-black/80"}`}>
+                                                            <span className={`!font-inter text-[13px] md:text-[14px] !font-medium ${isDuplicate ? "invisible" : "!text-black"}`}>
+                                                                {category.name}
+                                                            </span>
+                                                        </div>
 
-                            {/* Corporate Card - title at bottom */}
-                            <div className="bg-[#FFEBCE] rounded-3xl p-4 md:p-5">
-                                <div className="flex gap-3">
-                                    <div className="w-[130px] md:w-[150px] shrink-0 rounded-2xl overflow-hidden">
-                                        <Image
-                                            src={menuCards[3].image}
-                                            alt={menuCards[3].title}
-                                            width={150}
-                                            height={120}
-                                            className="w-full h-auto"
-                                        />
+                                                        {/* Items List */}
+                                                        <ul className="space-y-1">
+                                                            {category.items.map((item, itemIndex) => (
+                                                                <li
+                                                                    key={itemIndex}
+                                                                    className="!font-inter text-[13px] md:text-[14px] !font-normal !text-black/80 leading-relaxed"
+                                                                >
+                                                                    {item}
+                                                                </li>
+                                                            ))}
+                                                        </ul>
+                                                    </div>
+                                                    );
+                                                })}
+                                            </div>
+                                        </div>
                                     </div>
-                                    <p className="!font-inter text-[11px] md:text-[12px] !font-normal !text-black/80 leading-relaxed">
-                                        {menuCards[3].description}
-                                    </p>
+
+                                    {/* Divider line between sections */}
+                                    {sectionIndex < cateringMenuData.sections.length - 1 && (
+                                        <div className="mt-12 md:mt-16">
+                                            <div className="lg:pl-[312px]">
+                                                <hr className="border-t border-black/10" />
+                                            </div>
+                                        </div>
+                                    )}
                                 </div>
-                                <h3 className="!font-oswald text-[16px] md:text-[18px] !font-semibold !text-black mt-3 text-center">
-                                    {menuCards[3].title}
-                                </h3>
-                            </div>
+                            ))}
                         </div>
                     </div>
                 </div>

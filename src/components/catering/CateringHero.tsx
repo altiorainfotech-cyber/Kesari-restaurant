@@ -4,7 +4,7 @@ export default function CateringHero() {
     return (
         <section className="relative bg-[#D9D9D9] overflow-hidden">
             {/* Left vegetable image */}
-            <div className="hidden md:block absolute bottom-0 left-0 w-[200px] lg:w-[280px] animate-[fadeInLeft_1s_ease-out_forwards]">
+            <div className="absolute bottom-0 left-0 w-[120px] sm:w-[160px] md:w-[200px] lg:w-[280px] animate-[fadeInLeft_1s_ease-out_forwards]">
                 <Image
                     src="/images/catring/left-side-image.png"
                     alt=""
@@ -15,7 +15,7 @@ export default function CateringHero() {
             </div>
 
             {/* Right vegetable image */}
-            <div className="hidden md:block absolute bottom-0 right-0 w-[280px] lg:w-[380px] animate-[fadeInRight_1s_ease-out_0.3s_forwards] opacity-0">
+            <div className="absolute bottom-0 right-0 w-[140px] sm:w-[200px] md:w-[280px] lg:w-[380px] animate-[fadeInRight_1s_ease-out_0.3s_forwards] opacity-0">
                 <Image
                     src="/images/catring/rightside-image.png"
                     alt=""

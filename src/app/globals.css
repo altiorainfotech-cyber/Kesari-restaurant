@@ -74,6 +74,15 @@ h6 {
   }
 }
 
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* Orbiting dot animation for catering menu */
 @keyframes orbitSpin {
   from {

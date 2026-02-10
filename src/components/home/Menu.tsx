@@ -52,13 +52,13 @@ export default function Menu() {
     const fadeInVariants = {
         hidden: { opacity: 0, y: 30 },
         visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
-    };
+    } as const;
 
     const slideVariants = {
         initial: { opacity: 0, x: 20 },
         animate: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } },
         exit: { opacity: 0, x: -20, transition: { duration: 0.3, ease: "easeIn" } }
-    };
+    } as const;
 
     return (
         <section className="relative py-8 md:py-20 bg-white overflow-hidden min-h-[700px] flex flex-col items-center">
