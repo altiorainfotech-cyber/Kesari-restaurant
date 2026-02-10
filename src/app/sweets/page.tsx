@@ -1,11 +1,14 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import sweetsData from "@/data/sweetsData.json";
 import { Header, FooterSecondary } from "@/components/layout";
+import { useCart } from "@/context/CartContext";
 
 export default function SweetsPage() {
+    const { addToCart, cartItems, updateQuantity: updateCartQuantity, totalItems } = useCart();
     const [quantities, setQuantities] = useState<{ [key: number]: number }>(
         Object.fromEntries(sweetsData.map(item => [item.id, 1]))
     );
@@ -13,11 +16,50 @@ export default function SweetsPage() {
         Object.fromEntries(sweetsData.map(item => [item.id, "1 kg"]))
     );
 
-    const updateQuantity = (id: number, delta: number) => {
-        setQuantities(prev => ({
-            ...prev,
-            [id]: Math.max(1, (prev[id] || 1) + delta)
-        }));
+    const getCartKey = (item: typeof sweetsData[0]) => {
+        const weight = item.unit === "lb" ? selectedWeights[item.id] : "Per piece";
+        return `sweet-${item.id}-${weight}`;
+    };
+
+    const getItemQuantity = (item: typeof sweetsData[0]) => {
+        const cartKey = getCartKey(item);
+        const cartItem = cartItems.find(i => i.cartKey === cartKey);
+        return cartItem ? cartItem.quantity : (quantities[item.id] || 1);
+    };
+
+    const handleOrderNow = (item: typeof sweetsData[0]) => {
+        const cartKey = getCartKey(item);
+        const weight = item.unit === "lb" ? selectedWeights[item.id] : "Per piece";
+        const existing = cartItems.find(i => i.cartKey === cartKey);
+
+        if (existing) {
+            updateCartQuantity(cartKey, existing.quantity + (quantities[item.id] || 1));
+        } else {
+            addToCart({
+                cartKey,
+                name: item.name,
+                price: item.price,
+                quantity: quantities[item.id] || 1,
+                image: item.image,
+                weight,
+                source: "sweet",
+            });
+        }
+        setQuantities(prev => ({ ...prev, [item.id]: 1 }));
+    };
+
+    const updateItemQuantity = (item: typeof sweetsData[0], delta: number) => {
+        const cartKey = getCartKey(item);
+        const cartItem = cartItems.find(i => i.cartKey === cartKey);
+
+        if (cartItem) {
+            updateCartQuantity(cartKey, Math.max(1, cartItem.quantity + delta));
+        } else {
+            setQuantities(prev => ({
+                ...prev,
+                [item.id]: Math.max(1, (prev[item.id] || 1) + delta)
+            }));
+        }
     };
 
     const updateWeight = (id: number, weight: string) => {
@@ -105,7 +147,7 @@ export default function SweetsPage() {
                                             </div>
                                         ) : (
                                             <div className="h-[28px] mb-4 flex items-center">
-                                                <span className="!font-oswald text-[10px] !font-normal text-gray-300 tracking-wider">Per piece</span>
+                                                <span className="!font-oswald text-[12px] !font-normal !text-black tracking-wider">Per piece</span>
                                             </div>
                                         )}
 
@@ -117,16 +159,16 @@ export default function SweetsPage() {
 
                                             <div className="flex items-center gap-2">
                                                 <button
-                                                    onClick={() => updateQuantity(item.id, -1)}
+                                                    onClick={() => updateItemQuantity(item, -1)}
                                                     className="bg-black text-white w-5 h-5 flex items-center justify-center text-[12px] font-bold rounded-[3px] hover:bg-gray-800 transition-colors shadow-sm"
                                                 >
                                                     -
                                                 </button>
                                                 <span className="!font-inter text-[14px] font-bold text-black min-w-[16px] text-center">
-                                                    {quantities[item.id]}
+                                                    {getItemQuantity(item)}
                                                 </span>
                                                 <button
-                                                    onClick={() => updateQuantity(item.id, 1)}
+                                                    onClick={() => updateItemQuantity(item, 1)}
                                                     className="bg-black text-white w-5 h-5 flex items-center justify-center text-[12px] font-bold rounded-[3px] hover:bg-gray-800 transition-colors shadow-sm"
                                                 >
                                                     +
@@ -135,8 +177,8 @@ export default function SweetsPage() {
                                         </div>
 
                                         {/* Order Now Button - Overlapping Bottom Edge */}
-                                        <button className="absolute bottom-0 translate-y-1/2 bg-[#FF9900] !font-oswald !text-black px-10 py-2.5 rounded-full text-[16px] !font-normal shadow-[0_6px_18px_rgba(255,153,0,0.35)] hover:bg-[#e68a00] hover:scale-[1.05] active:scale-[0.95] transition-all duration-300 capitalize tracking-widest whitespace-nowrap z-20">
-                                            Order Now
+                                        <button onClick={() => handleOrderNow(item)} className="absolute bottom-0 translate-y-1/2 bg-[#FF9900] !font-oswald !text-black px-10 py-2.5 rounded-full text-[16px] !font-normal shadow-[0_6px_18px_rgba(255,153,0,0.35)] hover:bg-[#e68a00] hover:scale-[1.05] active:scale-[0.95] transition-all duration-300 capitalize tracking-widest whitespace-nowrap z-20">
+                                            {cartItems.some(i => i.cartKey === getCartKey(item)) ? "Add More" : "Order Now"}
                                         </button>
                                     </div>
                                 ))}
@@ -150,11 +192,11 @@ export default function SweetsPage() {
                 <div className="mt-20 flex justify-end">
                     <div className="w-full md:w-[35%] lg:w-[30%] bg-[#FF9900] text-black py-4 px-10 flex justify-between items-center shadow-lg rounded-l-[30px] z-10">
                         <div className="!font-oswald text-[14px] !font-normal tracking-wide">
-                            1 Item Added
+                            {totalItems} {totalItems === 1 ? "Item" : "Items"} Added
                         </div>
-                        <button className="group !font-oswald text-[14px] !font-normal flex items-center gap-3 hover:translate-x-1 transition-all">
+                        <Link href="/cart" className="group !font-oswald text-[14px] !font-normal flex items-center gap-3 hover:translate-x-1 transition-all">
                             View Cart <span className="text-[18px]">›</span>
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </main>

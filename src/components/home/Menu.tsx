@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Menu() {
     const categories = [
@@ -48,8 +49,19 @@ export default function Menu() {
 
     const activeCategory = categories[activeIndex];
 
+    const fadeInVariants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+    };
+
+    const slideVariants = {
+        initial: { opacity: 0, x: 20 },
+        animate: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } },
+        exit: { opacity: 0, x: -20, transition: { duration: 0.3, ease: "easeIn" } }
+    };
+
     return (
-        <section className="relative py-20 bg-white overflow-hidden min-h-[700px] flex flex-col items-center">
+        <section className="relative py-8 md:py-20 bg-white overflow-hidden min-h-[700px] flex flex-col items-center">
             {/* Faded Background Image */}
             <div className="absolute inset-0 opacity-100 pointer-events-none z-0">
                 <Image
@@ -63,14 +75,29 @@ export default function Menu() {
 
             <div className="container mx-auto px-4 relative z-10 flex flex-col items-center">
                 {/* Food Menu Title */}
-                <div className="text-center mb-16">
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={fadeInVariants}
+                    className="text-center mb-16"
+                >
                     <h2 className="!font-oswald text-[48px] md:text-[60px] !font-normal text-[#FF9900] leading-none mb-4">
                         Food Menu
                     </h2>
-                </div>
+                </motion.div>
 
                 {/* Category Icons Row */}
-                <div className="flex flex-wrap justify-center items-center gap-y-10 gap-x-8 md:gap-x-12 mb-16 lg:mb-24 w-full max-w-5xl px-4">
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={{
+                        ...fadeInVariants,
+                        visible: { ...fadeInVariants.visible, transition: { ...fadeInVariants.visible.transition, delay: 0.2 } }
+                    }}
+                    className="flex flex-wrap justify-center items-center gap-y-10 gap-x-8 md:gap-x-12 mb-16 lg:mb-24 w-full max-w-5xl px-4"
+                >
                     {categories.map((cat, index) => (
                         <div key={cat.name} className="flex items-center gap-4 md:gap-8">
                             <div
@@ -94,45 +121,53 @@ export default function Menu() {
                             )}
                         </div>
                     ))}
-                </div>
+                </motion.div>
 
                 {/* Bottom Section: Image and Info */}
                 <div className="relative w-full flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-24 transition-opacity duration-500 py-10 lg:py-0">
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={activeIndex}
+                            initial="initial"
+                            animate="animate"
+                            exit="exit"
+                            variants={slideVariants}
+                            className="contents"
+                        >
+                            {/* Background Text (Protest Revolution) - Scaled for responsiveness */}
+                            <div className="absolute left-[5%] lg:left-[-2%] top-[5%] lg:top-1/2 lg:-translate-y-1/2 z-0 transition-all duration-700 ease-in-out opacity-40 lg:opacity-90 pointer-events-none">
+                                <span className="!font-protest text-[60px] md:text-[100px] lg:text-[150px] !font-normal text-[#FF9900] leading-[0.8] tracking-widest capitalize block whitespace-nowrap">
+                                    {activeCategory.bgText[0]}<br />{activeCategory.bgText[1]}
+                                </span>
+                            </div>
 
-                    {/* Background Text (Protest Revolution) - Scaled for responsiveness */}
-                    <div className="absolute left-[5%] lg:left-[-2%] top-[5%] lg:top-1/2 lg:-translate-y-1/2 z-0 transition-all duration-700 ease-in-out opacity-40 lg:opacity-90 pointer-events-none">
-                        <span className="!font-protest text-[60px] md:text-[100px] lg:text-[150px] !font-normal text-[#FF9900] leading-[0.8] tracking-widest capitalize block whitespace-nowrap">
-                            {activeCategory.bgText[0]}<br />{activeCategory.bgText[1]}
-                        </span>
-                    </div>
+                            {/* Left Side: Circular Image */}
+                            <div className="relative z-10">
+                                <div className="relative w-[220px] h-[220px] md:w-[259px] md:h-[259px] rounded-full overflow-hidden shadow-2xl ring-1 ring-gray-100 transition-transform duration-700 ease-in-out hover:scale-105">
+                                    <Image
+                                        src={activeCategory.image}
+                                        alt={activeCategory.name}
+                                        fill
+                                        className="object-cover"
+                                    />
+                                </div>
+                                {/* Small Orange Moon Shape */}
+                                <div className="absolute bottom-4 right-4 w-10 h-10 md:w-12 md:h-12 bg-[#FF9900] rounded-full flex items-center justify-center z-20 shadow-md">
+                                    <div className="w-5 h-5 md:w-6 md:h-6 border-[2px] md:border-[3px] border-white rounded-full"></div>
+                                </div>
+                            </div>
 
-                    {/* Left Side: Circular Image */}
-                    <div className="relative z-10">
-                        <div className="relative w-[220px] h-[220px] md:w-[259px] md:h-[259px] rounded-full overflow-hidden shadow-2xl ring-1 ring-gray-100 transition-transform duration-700 ease-in-out hover:scale-105">
-                            <Image
-                                src={activeCategory.image}
-                                alt={activeCategory.name}
-                                fill
-                                className="object-cover"
-                                key={activeCategory.image}
-                            />
-                        </div>
-                        {/* Small Orange Moon Shape */}
-                        <div className="absolute bottom-4 right-4 w-10 h-10 md:w-12 md:h-12 bg-[#FF9900] rounded-full flex items-center justify-center z-20 shadow-md">
-                            <div className="w-5 h-5 md:w-6 md:h-6 border-[2px] md:border-[3px] border-white rounded-full"></div>
-                        </div>
-                    </div>
-
-                    {/* Right Side: Description and Button */}
-                    <div className="relative z-10 flex flex-col items-center lg:items-start max-w-sm md:max-w-md text-center lg:text-left transition-all duration-500 px-4">
-                        <p className="!font-inter text-[16px] md:text-[18px] lg:text-[20px] !font-normal text-black leading-[1.6] mb-8 min-h-[auto] lg:min-h-[90px]">
-                            {activeCategory.description}
-                        </p>
-                        <button className="bg-[#FF9900] !font-oswald text-[14px] md:text-[16px] !font-normal text-white px-10 py-3.5 rounded-[35px] hover:bg-[#e68a00] hover:scale-105 active:scale-95 transition-all duration-300 uppercase tracking-widest shadow-lg shadow-orange-200">
-                            Explore Menu
-                        </button>
-                    </div>
-
+                            {/* Right Side: Description and Button */}
+                            <div className="relative z-10 flex flex-col items-center lg:items-start max-w-sm md:max-w-md text-center lg:text-left px-4">
+                                <p className="!font-inter text-[16px] md:text-[18px] lg:text-[20px] !font-normal text-black leading-[1.6] mb-8 min-h-[auto] lg:min-h-[90px]">
+                                    {activeCategory.description}
+                                </p>
+                                <button className="bg-[#FF9900] !font-oswald text-[14px] md:text-[16px] !font-normal text-white px-10 py-3.5 rounded-[35px] hover:bg-[#e68a00] hover:scale-105 active:scale-95 transition-all duration-300 uppercase tracking-widest shadow-lg shadow-orange-200">
+                                    Explore Menu
+                                </button>
+                            </div>
+                        </motion.div>
+                    </AnimatePresence>
                 </div>
             </div>
         </section>

@@ -1,13 +1,23 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function FromOurKitchen() {
+  const fadeIn = {
+    initial: { opacity: 0, scale: 0.95 },
+    whileInView: { opacity: 1, scale: 1 },
+    viewport: { once: true },
+    transition: { duration: 1, ease: "easeOut" }
+  } as const;
+
   return (
-    <section className="relative py-20 bg-white">
+    <section className="relative mt-[80px] pt-0 pb-8 md:py-4 bg-white">
       <div className="container mx-auto px-6 md:px-12 lg:px-20">
-        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-16 lg:gap-24">
+        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-0 lg:gap-24">
 
           {/* Column 3: Title, Description and Laccha Parantha - AT THE TOP on mobile */}
-          <div className="w-full lg:w-auto flex flex-col items-center text-center lg:text-left pt-6 order-first lg:order-last">
+          <div className="w-full lg:w-auto flex flex-col items-center text-center lg:text-left pt-0 md:pt-0 order-first lg:order-last">
             <h2 className="!font-oswald text-[36px] md:text-[45px] !font-normal text-title leading-[1.1] mb-6 max-w-md">
               From Our Kitchen&apos;s Best
             </h2>
@@ -17,7 +27,10 @@ export default function FromOurKitchen() {
 
             {/* Laccha Parantha - Shown below description on mobile, but absolute on desktop */}
             <div className="flex flex-col items-center w-full relative group mb-12 lg:mb-0">
-              <div className="relative w-[280px] h-[210px] md:w-[360px] md:h-[260px]">
+              <motion.div
+                {...fadeIn}
+                className="relative w-[280px] h-[210px] md:w-[360px] md:h-[260px]"
+              >
                 <Image
                   src="/images/home-page/herosection/Laccha-Parantha.png"
                   alt="Laccha Parantha"
@@ -27,7 +40,7 @@ export default function FromOurKitchen() {
                 <h3 className="absolute bottom-0 right-0 lg:bottom-[20px] lg:right-[-60px] !font-oswald text-[22px] md:text-[24px] !font-normal !text-black z-10 transition-transform duration-500 group-hover:translate-x-1">
                   Laccha Parantha
                 </h3>
-              </div>
+              </motion.div>
             </div>
           </div>
 
@@ -46,24 +59,31 @@ export default function FromOurKitchen() {
                 <h3 className="lg:hidden !font-oswald text-[20px] !font-normal !text-black mb-2">Chicken Biryani</h3>
 
                 {/* Biryani */}
-                <div className="relative w-full aspect-[4/3] transform hover:scale-105 transition-transform duration-500">
+                <motion.div
+                  {...fadeIn}
+                  className="relative w-full aspect-[4/3] transform hover:scale-105 transition-transform duration-500"
+                >
                   <Image
                     src="/images/home-page/herosection/Chicken-Biryani.png"
                     alt="Chicken Biryani"
                     fill
                     className="object-contain"
                   />
-                </div>
+                </motion.div>
 
                 {/* Gobi */}
-                <div className="relative w-full aspect-[4/3] transform hover:scale-105 transition-transform duration-500">
+                <motion.div
+                  {...fadeIn}
+                  transition={{ ...fadeIn.transition, delay: 0.2 }}
+                  className="relative w-full aspect-[4/3] transform hover:scale-105 transition-transform duration-500"
+                >
                   <Image
                     src="/images/home-page/herosection/Gobi-Manchurian.png"
                     alt="Gobi Manchurian"
                     fill
                     className="object-contain"
                   />
-                </div>
+                </motion.div>
 
                 {/* Mobile Title */}
                 <h3 className="lg:hidden !font-oswald text-[20px] !font-normal !text-black mt-2">Gobi Manchurian</h3>
@@ -81,14 +101,17 @@ export default function FromOurKitchen() {
                 {/* Mobile Title */}
                 <h3 className="lg:hidden !font-oswald text-[20px] !font-normal !text-black mb-4">Pav Bhaji</h3>
 
-                <div className="relative w-full aspect-[4/3] mb-4 transform hover:scale-110 transition-transform duration-500">
+                <motion.div
+                  {...fadeIn}
+                  className="relative w-full aspect-[4/3] mb-4 transform hover:scale-110 transition-transform duration-500"
+                >
                   <Image
                     src="/images/home-page/herosection/Pav-Bhaji.png"
                     alt="Pav Bhaji"
                     fill
                     className="object-contain"
                   />
-                </div>
+                </motion.div>
                 <h3 className="hidden lg:block !font-oswald text-[24px] !font-normal !text-black">
                   Pav Bhaji
                 </h3>
