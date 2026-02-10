@@ -1,10 +1,19 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function OurCulinaryStory() {
   return (
-    <section className="relative py-16 bg-white">
+    <section className="relative mt-[50px] pt-8 pb-0 md:py-4 bg-white overflow-hidden md:overflow-visible flex flex-col items-center">
       {/* Right Decorative Image - Hidden on mobile for cleaner layout */}
-      <div className="hidden lg:block absolute right-[-8%] top-[-80px] w-[450px] pointer-events-none z-10">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
+        className="hidden lg:block absolute right-[-8%] top-[-80px] w-[450px] pointer-events-none z-10"
+      >
         <Image
           src="/images/home-page/herosection/Group58.png"
           alt="Decorative chilies"
@@ -12,7 +21,7 @@ export default function OurCulinaryStory() {
           height={600}
           className="w-full h-auto object-contain"
         />
-      </div>
+      </motion.div>
 
       {/* Content */}
       <div className="relative z-30 container mx-auto px-6 md:px-12 lg:px-20">
